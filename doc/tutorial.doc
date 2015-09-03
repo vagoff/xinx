@@ -151,7 +151,7 @@ All values in XinX are immutable. There is no way to alter, say, for procedure t
         (assign *myvar* "so long")
     )
     (def myproc2 []
-        (printf "%s, word...")
+        (printf "%s, word..." *myvar*)
     )
     ;; dynamic scope of the variable (so named `context')
     (print
