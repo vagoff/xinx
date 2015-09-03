@@ -156,7 +156,8 @@ All values in XinX are immutable. There is no way to alter, say, for procedure t
     ;; dynamic scope of the variable (so named `context')
     (print
         (using
-            *myvar* "hello" ;; variables are initialized only in dynamic scope, i.e. one cannot assign them globally
+            ;; variables are initialized only in dynamic scope, i.e. one cannot assign them globally
+            *myvar* "hello"
            (myproc1) ;; => "hello, world!"
            (myproc2) ;; => "so long, world..."
         )
