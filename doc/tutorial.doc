@@ -1,0 +1,165 @@
+{center {img logo.png XinX}}
+
+{h1 XinX}
+
+{p TL;DR: {b XinX} is just {http://clojure.org/ Clojure} done right: using "fail fast" principle and abstracting from underlying platform. }
+
+{comment
+[!] {p
+All values in XinX are immutable. There is no way to alter, say, for procedure to alter collection passed as its argument in course of its execution.}
+}
+
+{h4 Lexical Notes}
+{pre
+    line comments: ;; ... to the end of line
+    block comments: (comment ... anything lexically well formed ... )
+    ignore next form: #_[1 2 3] or #_(let a 1 :in (printf "a=%d" 1))
+    (block comments are not quite comments; they are made to comment out large blocks of code easier)
+}
+
+{h4 Builtin Data Types}
+{pre
+    booleans: true false
+    characters: (char "a") (char "b")
+    numbers: 0 1 2 -3.51 6.08e-1 1e4
+    strings: "aa" (must be on one line) """bbb""" (may be multiline)
+    symbols: 'a 'b '***thisissymboltoo***
+    keywords: :a :b :nameofkeyword
+    lists: [ 1 2 3 ] []
+    tuples: (, 1 2 3 ) (,) (, 1)
+    ordered maps: { "a" 1 "b" 2 :c 3 [4] 5 true 6 }
+    ordered sets: #{ 1 2 3 4 "a" (, 'b :c ) }
+}
+
+{h3 Basic operations}
+{p
+    {eval (+ 1 2 3)}
+    {eval (- 100 1 2)}
+    {eval (* 1 2 3 4)}
+    {eval (/ 10 3)}
+    {eval (inc 99)}
+    {eval (dec 0)}
+    {eval (zero? 100)}
+    {eval (neg? -9)}
+    {eval (empty? [])}
+    {eval (empty? (, 1 2 3))}
+    {eval (empty? "abc")}
+    {eval (++ "abc" "def")}
+    {eval (++ [1 2 3] [4 5])
+    {eval (== "abc" (++ "a" "bc"))}
+    {eval (=/= 1 2 3)}
+}
+
+{h3 Debugging}
+{p
+    {eval (assert false "fail!!!")}
+    {eval (assert true "ok!")}
+    {eval (dump 'a :b dump assert "c")}
+}
+
+{h3 Simple I/O}
+{code
+    (print "hello world")
+    (printf "number is: %f" 123.431)
+    (print "you entered: %s"
+        (input "enter some number:")
+    )
+    (write_text_file "file.txt" "Contents")
+    (print "contents of file %s is '%s'" "file.txt" (read_text_file "file.txt"))
+}
+
+{h3 Special Forms}
+{code
+    (let
+        a 1
+        b "a"
+    :in
+        (dump "a=" a "b=" b)
+    )
+    (if (== 1 2)
+        (print "1 == 2")
+        (print "1 =/= 2")
+    )
+    (if (empty? [])
+        (print "yes!")
+        (print "[] is empty!")
+    :else
+        (print "bug, [] is considered ad not empty")
+    )
+    (dump (if true 1 2))
+    (dump (if false 2 1))
+    (when true
+        (print "true!")
+    )
+    (when false
+        (print "no print")
+    )
+    (let
+        a 1
+        b 10
+    :loop
+        (when (> b 0)
+            (printf "%d | %d" a b)
+            (loop (inc a) (dec  b))
+        )
+    )
+}
+
+{h3 Records}
+{code
+    (defrecord Person [name surname])
+    (def main []
+        (let
+            p1 (Person :name "John" :surname "Smith")
+            p2 (set p1 :name "Jack")
+        :in
+            (printf "Person: %s %s" (get p :name) (get p :surname))
+            (printf "Brother: %s %s" (get p :name) (get p :surname))
+        )
+    )
+}
+
+{h3 Protocols}
+{code
+    (defprotocol ISize
+        (getsize [somecollection])
+    )
+    (implement ISize
+        List
+            (getsize [l]
+                (count l)
+            )
+        Tuple
+            (getsize [t]
+                (count t)
+            )
+        Person
+            (getsize [p]
+                99 ;; size of person is 99, whatever it means
+            )
+    )
+}
+
+{h4 Standard Library}
+
+{h5 Working with Collections}
+
+{table
+    {tr
+        {eval (slice [1 2 3 4 5] 3 2)}
+        {eval (slice [1 2 3 4 5] 1 -2)}
+        {eval (slice [1 2 3 4 5] 2)}
+        {eval (pairwise [1 2 3 4])}
+        {eval (split 0 [0 1 2 0 3 0 0 4 0 5 0 0])}
+        map
+        filter
+        empty?
+        empty_copy
+    }
+}
+
+{h4 Macros}
+
+{h4 Quoting and Quasiquiting}
+
+ or '(1 2 3 )

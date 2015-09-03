@@ -1,0 +1,9 @@
+{h glossary}
+{dd
+{dt module x file}
+{dt tld toplevel definition}
+{dt load read + parse + execute_directives}
+{dt translate produce target source code for given TLD}
+{dt compile translate given TLD and all its dependencies}
+{dt dependency dependency of TLD A is some TLD B reference to which is contained in the body of A (note that and A may be equal to B)}
+}
