@@ -144,6 +144,8 @@ collection passed as its argument in course of its execution.}
 }
 
 {h3 Variables}
+{p To avoid confusion, we will call names of procedure arguments and these identifiers in (let) form as `bound names`,
+places where they were bound as `bindings', and reserve word `variable' solely for the following purpose.}
 {code
     ;; declare a variable (this is mandatory step, each variable must be declared before use)
     (declare *myvar* """description of variable value and its use""")
