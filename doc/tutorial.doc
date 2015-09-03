@@ -176,8 +176,8 @@ So,
         (assign n "hello") ;; -- WONT WORK!
     )
 }
-{p The difference between mutable and immutable variables exactly that immutable variables cannot be (assign)-ed, only
-initialized in (using) and accessed in read only mode just by name.}
+{p The difference between mutable and immutable variables exactly that immutable variables cannot be
+(assign)-ed, only initialized in (using) and accessed in read only mode just by name.}
 
 {h4 Standard Library}
 
