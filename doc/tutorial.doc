@@ -141,6 +141,41 @@ All values in XinX are immutable. There is no way to alter, say, for procedure t
     )
 }
 
+{h3 Variables}
+{code
+    ;; declare a variable (this is mandatory step, each variable must be declared before use)
+    (declare *myvar* """description of variable value and its use""")
+    ;; various users of the variable
+    (def myproc1 []
+        (printf "%s, world!" *myvar*)
+        (assign *myvar* "so long")
+    )
+    (def myproc2 []
+        (printf "%s, word...")
+    )
+    ;; dynamic scope of the variable (so named `context')
+    (print
+        (using
+            *myvar* "hello" ;; variables are initialized only in dynamic scope, i.e. one cannot assign them globally
+           (myproc1) ;; => "hello, world!"
+           (myproc2) ;; => "so long, world..."
+        )
+    )
+}
+{p There are two kinds of variables in XinX: mutable and immutable. All XinX values are immutable,
+but variables are not values: one cannot store them in collection or get an indirect access to them.
+By convention, mutable variables named as *somename* while immutable variables named as %somename%.
+(By the way, constants are named as %somename%)
+So,
+}
+{code
+    (let
+        n '*myvar*
+    :in
+        (assign n "hello") ;; -- WONT WORK!
+    )
+}
+
 {h4 Standard Library}
 
 {h5 Working with Collections}
