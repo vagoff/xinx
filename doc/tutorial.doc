@@ -2,11 +2,13 @@
 
 {h1 XinX}
 
-{p TL;DR: {b XinX} is just {http://clojure.org/ Clojure} done right: using "fail fast" principle and abstracting from underlying platform. }
+{p TL;DR: {b XinX} is just {http://clojure.org/ Clojure} done right: using "fail fast" principle and
+abstracting from underlying platform. }
 
 {comment
 [!] {p
-All values in XinX are immutable. There is no way to alter, say, for procedure to alter collection passed as its argument in course of its execution.}
+All values in XinX are immutable. There is no way to alter, say, for procedure to alter
+collection passed as its argument in course of its execution.}
 }
 
 {h4 Lexical Notes}
