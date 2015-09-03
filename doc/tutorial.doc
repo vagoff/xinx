@@ -27,7 +27,7 @@ All values in XinX are immutable. There is no way to alter, say, for procedure t
     keywords: :a :b :nameofkeyword
     lists: [ 1 2 3 ] []
     tuples: (, 1 2 3 ) (,) (, 1)
-    ordered maps: { "a" 1 "b" 2 :c 3 [4] 5 true 6 }
+    ordered maps: { "a" 1 "b" 2 :c 3 [4] 5 true 6 } (yes, complex values are allowed to be keys)
     ordered sets: #{ 1 2 3 4 "a" (, 'b :c ) }
 }
 
