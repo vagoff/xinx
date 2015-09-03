@@ -44,6 +44,7 @@ All values in XinX are immutable. There is no way to alter, say, for procedure t
     {eval (empty? [])}
     {eval (empty? (, 1 2 3))}
     {eval (empty? "abc")}
+    {eval (, (count "abc") (count []) (count (, 9 8 )))}
     {eval (++ "abc" "def")}
     {eval (++ [1 2 3] [4 5])
     {eval (== "abc" (++ "a" "bc"))}
