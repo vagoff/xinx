@@ -13,7 +13,7 @@ All values in XinX are immutable. There is no way to alter, say, for procedure t
 {pre
     line comments: ;; ... to the end of line
     block comments: (comment ... anything lexically well formed ... )
-    ignore next form: #_[1 2 3] or #_(let a 1 :in (printf "a=%d" 1))
+    ignore next form: #_0 #_"a" #_[1 2 3] #_(let a 1 :in (printf "a=%d" 1))
     (block comments are not quite comments; they are made to comment out large blocks of code easier)
 }
 
