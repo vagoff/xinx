@@ -183,6 +183,23 @@ So,
 {p The difference between mutable and immutable variables exactly that immutable variables cannot be
 (assign)-ed, only initialized in (using) and accessed in read only mode just by name.}
 
+{h3 Exceptions}
+{code
+    (try
+        (print "do something here")
+        (print "(like division by zero)" 1/0)
+    :except (DivisionByZero e)
+        (print "exception. do something then")
+        (raise e) ;; re-raise an exception further
+     :except e ;; any other exception (type unspecified)
+        (print "ouch")
+     :finally ;; this code will be executed in any case, regardless of any exceptions occured
+        (print "yo!")
+     :else ;; this code will be executed only if no exceptions was catched in this (try) statement
+        (print "O.K.")
+    )
+}
+
 {h4 Standard Library}
 
 {h5 Working with Collections}
